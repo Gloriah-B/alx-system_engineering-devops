@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-# This script displays the time from 0:00 to 1:59 with "Hour: x" before each hour
+# Bash script to display time for 12 hours and 59 minutes
 
 hour=0
 
-while [ "$hour" -le 1 ]; do
-    echo "Hour: $hour"
-    
-    minute=0
+while [ "$hour" -le 12 ]; do
+    if [ "$hour" -eq 0 ]; then
+        echo "Hour: 0"
+    else
+        echo "Hour: $hour"
+    fi
+
+    minute=1
     while [ "$minute" -le 59 ]; do
-        if [ "$minute" -lt 10 ]; then
-            echo "$minute"
-        else
-            echo "$minute"
-        fi
+        echo "$minute"
         ((minute++))
     done
-    
+
     ((hour++))
 done | head -n 70
