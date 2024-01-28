@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Stop the 4-to_infinity_and_beyond process
+
+# Replace YOUR_PID with the actual PID of the process
+process_pid=YOUR_PID
+
+if [ -n "$process_pid" ]; then
+    echo "Stopping the process $process_pid"
+    kill -15 "$process_pid"
+else
+    echo "No PID provided"
+fi
