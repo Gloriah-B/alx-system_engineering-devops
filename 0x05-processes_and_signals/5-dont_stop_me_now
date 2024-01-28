@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Stop the 4-to_infinity_and_beyond process
 
-# Assuming the process name is "4-to_infinity_and_beyond.sh"
-process_name="4-to_infinity_and_beyond.sh"
+# Assuming the process name is "4-to_infinity_and_beyond"
+process_name="4-to_infinity_and_beyond"
 
 # Get the PID of the process
-pid=$(pgrep -f "$process_name")
+pid=$(pgrep -x "$process_name")
 
 if [ -n "$pid" ]; then
 	    echo "Stopping the process $pid"
