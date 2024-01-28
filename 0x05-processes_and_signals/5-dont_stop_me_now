@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Stop the "To infinity and beyond" process
+
+# Assuming the process name is "infinity_loop.sh"
+process_name="infinity_loop.sh"
+
+# Get the PID of the process
+pid=$(pgrep -f "$process_name")
+
+if [ -n "$pid" ]; then
+    echo "Stopping the process $pid"
+    kill "$pid"
+else
+    echo "No matching process found"
+fi
