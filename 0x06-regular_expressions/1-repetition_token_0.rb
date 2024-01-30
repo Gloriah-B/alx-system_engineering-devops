@@ -10,7 +10,7 @@ end
 input_string = ARGV[0]
 
 # Define the regular expression to match "School" at the end of the string
-pattern = /School$/
+pattern = /School\z/
 
 # Check if the input string matches the pattern
 if input_string =~ pattern
