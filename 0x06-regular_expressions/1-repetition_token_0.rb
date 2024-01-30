@@ -9,12 +9,12 @@ end
 # Extract the argument
 input_string = ARGV[0]
 
-# Define the regular expression to match "School" at the end of the string
-pattern = /School\z/
+# Define the regular expression to match the specified repetition pattern
+pattern = /hb(t{2,5})n/
 
 # Check if the input string matches the pattern
-if input_string =~ pattern
-  puts "#{input_string}$"
+if match = input_string.match(pattern)
+  puts match[1] # Output the matched repetition part
 else
-  puts "$"
+  puts "No match"
 end
