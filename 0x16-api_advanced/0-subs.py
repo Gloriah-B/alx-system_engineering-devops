@@ -13,12 +13,24 @@ def number_of_subscribers(subreddit):
     Query Reddit API and return number of subscribers for given subreddit
     """
 
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+        "User-Agent": "SubredditSubscriberCounter"
     }
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 404:
+
+    try:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                subscribers = data['data']['subscribers']
+                return subscribers
+            except KeyError:
+                # Handle case when JSON response doesn't contain expected data
+                return 0
+        else:
+            # Handle case when HTTP request fails
+            return 0
+    except requests.RequestException:
+        # Handle case when there's an issue with the request
         return 0
-    results = response.json().get("data")
-    return results.get("subscribers")
