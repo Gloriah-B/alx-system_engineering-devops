@@ -18,5 +18,3 @@ def top_ten(subreddit):
             print(post.get('data').get('title'))
     except Exception:
         print(None)
-
-
